@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DepositActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary">
+
+
+        <TextView
+            style="@style/CasualFont"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="@string/deposit_title_label"/>
+        <EditText
+            style="@style/DepositScreenEditText"
+            android:id="@+id/depositInput1"
+            android:importantForAutofill="no" />
+        <EditText
+            style="@style/DepositScreenEditText"
+            android:id="@+id/depositInput2"
+            android:importantForAutofill="no" />
+        <EditText
+            style="@style/DepositScreenEditText"
+            android:id="@+id/depositInput3"
+            android:importantForAutofill="no" />
+        <Button
+            style="@style/CasualFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/submit_button_label"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:background="@color/colorButton"
+            android:onClick="makeDeposit"/>
+
+    </LinearLayout>
+
+</ScrollView>

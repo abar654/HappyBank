@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/titleText"
+        android:layout_width="411dp"
+        android:layout_height="118dp"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:src="@drawable/title_text" />
+
+    <ImageView
+        android:id="@+id/mainIcon"
+        android:layout_width="168dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:src="@drawable/pig_icon" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="245dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/mainDepositButton"
+            style="@style/MainScreenButton"
+            android:layout_weight="1"
+            android:text="@string/main_deposit_button_label" />
+
+        <Button
+            android:id="@+id/mainWithdrawButton"
+            style="@style/MainScreenButton"
+            android:layout_weight="1"
+            android:text="@string/main_withdraw_button_label" />
+
+        <Button
+            android:id="@+id/mainSettingsButton"
+            style="@style/MainScreenButton"
+            android:layout_weight="1"
+            android:text="@string/main_settings_button_label" />
+
+    </LinearLayout>
+
+</LinearLayout>
