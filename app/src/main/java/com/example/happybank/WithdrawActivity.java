@@ -3,7 +3,9 @@ package com.example.happybank;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -49,17 +51,30 @@ public class WithdrawActivity extends AppCompatActivity {
             depositsInput.close();
 
             //If there were any messages choose one of the ones with the lowest count to show
+            //Or if the favour recent field is not set in the preferences file show any message
             if(lowestCount < Integer.MAX_VALUE) {
 
-                ArrayList<Integer> leastShownMessageIndices = new ArrayList<Integer>();
-                for(int i=0; i < allShowCounts.size(); i++) {
-                    if(allShowCounts.get(i).intValue() == lowestCount) {
-                        leastShownMessageIndices.add(i);
+                //Check the favour recent field
+                SharedPreferences preferences = getSharedPreferences(getString(R.string.preferences_filename), Context.MODE_PRIVATE);
+                boolean favourRecent = preferences.getBoolean("RECENT_ID", false);
+
+                ArrayList<Integer> possibleMessageIndices = new ArrayList<Integer>();
+
+                if(favourRecent) {
+                    for(int i=0; i < allShowCounts.size(); i++) {
+                        if(allShowCounts.get(i).intValue() == lowestCount) {
+                            possibleMessageIndices.add(i);
+                        }
+                    }
+                } else {
+                    for(int i=0; i < allShowCounts.size(); i++) {
+                        possibleMessageIndices.add(i);
                     }
                 }
+
                 Random rand = new Random();
-                int randomIndex = rand.nextInt(leastShownMessageIndices.size());
-                int chosenMessageIndex = leastShownMessageIndices.get(randomIndex);
+                int randomIndex = rand.nextInt(possibleMessageIndices.size());
+                int chosenMessageIndex = possibleMessageIndices.get(randomIndex);
 
                 //Show that message in the textView
                 TextView messageTextView = findViewById(R.id.withdrawTextView);
