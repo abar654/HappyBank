@@ -24,4 +24,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="preferences_filename">SETTINGS</string>
+    <string name="about_title_label">About Happy Bank</string>
+    <string name="subtitle_label">Happy Bank is a place to collect, store and revisit things that you are grateful for in your life.</string>
+    <string name="about_deposit_title_label">Daily Deposit</string>
+    <string name="about_deposit_label">At the end of each day write down 3 things that you were grateful for during the day. It might be something that happened, it might be someone you met, or it might be something you thought about. Reflecting back on the good things in your day helps you to realise the positive things in your life and to have them in your mind as you end your day.</string>
+    <string name="about_withdrawal_title_label">Random Withdrawal</string>
+    <string name="about_withdrawal_label">If you are ever feeling down, or you just feel like revisiting happy memories, you can make a random withdrawal from your Happy Bank to be reminded of something you were grateful for in the past. In the settings menu you can change the randomisation method to favour more recent deposits or not.</string>
+    <string name="about_notification_label">Happy Bank will remind you to make a daily deposit by sending a notification at your chosen \"bedtime\". This can be set in the settings menu. You can also choose for Happy Bank to give you Random Withdrawal notifications.</string>
+    <string name="about_notification_title_label">Notifications</string>
+    <string name="main_about_button_label">About</string>
 </resources>
