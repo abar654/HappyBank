@@ -33,4 +33,5 @@
     <string name="about_notification_label">Happy Bank will remind you to make a daily deposit by sending a notification at your chosen \"bedtime\". This can be set in the settings menu. You can also choose for Happy Bank to give you Random Withdrawal notifications.</string>
     <string name="about_notification_title_label">Notifications</string>
     <string name="main_about_button_label">About</string>
+    <string name="randomisation_title_label">Favour recent\nwithdrawals</string>
 </resources>

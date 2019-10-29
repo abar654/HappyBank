@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.io.File;
@@ -22,6 +23,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     public static final String nameID = "NAME_ID";
     public static final String bedtimeID = "BED_ID";
+    public static final String recentID = "RECENT_ID";
 
 
     @Override
@@ -58,8 +60,15 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
         });
+
         if(preferences.contains(bedtimeID)) {
             bedEdit.setText(preferences.getString(bedtimeID, getString(R.string.default_bedtime)));
+        }
+
+        //Prefill the switch with current setting
+        if(preferences.contains(recentID)) {
+            Switch recentSwitch = findViewById(R.id.randomisationSwitch);
+            recentSwitch.setChecked(preferences.getBoolean(recentID, false));
         }
 
         //Set the deposit count
@@ -89,6 +98,9 @@ public class SettingsActivity extends AppCompatActivity {
 
                 editor.putString(nameID, nameEdit.getText().toString());
                 editor.putString(bedtimeID, bedEdit.getText().toString());
+
+                Switch recentSwitch = findViewById(R.id.randomisationSwitch);
+                editor.putBoolean(recentID, recentSwitch.isChecked());
 
                 editor.apply();
                 setResult(RESULT_OK);

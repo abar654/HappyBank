@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,47 +10,27 @@
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
     android:background="@color/colorPrimary"
+    android:orientation="vertical"
     tools:context=".SettingsActivity">
 
     <TextView
-        style="@style/CasualFont"
         android:id="@+id/settingsTitle"
+        style="@style/CasualFont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="@string/settings_title_label"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/settingsTableLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.465" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="169dp"
-        android:layout_height="136dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settingsTableLayout"
-        app:layout_constraintVertical_bias="0.085"
-        app:srcCompat="@drawable/pig_icon"
-        tools:ignore="ContentDescription" />
+        android:textSize="36sp" />
 
     <TableLayout
         android:id="@+id/settingsTableLayout"
-        android:layout_width="307dp"
-        android:layout_height="330dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.424">
+        android:layout_width="305dp"
+        android:layout_height="476dp"
+        android:layout_gravity="center"
+        android:gravity="center">
 
         <TableRow
             android:layout_width="match_parent"
@@ -97,6 +78,31 @@
                 android:ems="10"
                 android:onClick="showTimePickerDialog"
                 android:text="@string/default_bedtime" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/randomisationTitle"
+                style="@style/CasualFont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/randomisation_title_label"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="22sp" />
+
+            <Switch
+                android:id="@+id/randomisationSwitch"
+                style="@style/CasualFont"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:showText="false" />
+
+
         </TableRow>
 
         <TableRow
@@ -157,4 +163,4 @@
 
     </TableLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
