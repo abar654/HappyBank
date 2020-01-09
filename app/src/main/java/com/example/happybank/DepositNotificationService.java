@@ -4,6 +4,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
@@ -48,13 +49,17 @@ public class DepositNotificationService extends Service {
                         .setAutoCancel(true)
                         .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
 
-        // Set what happens when the notification is tapped
+        //Create an intent for the DepositActivity
         Intent resultIntent = new Intent(this, DepositActivity.class);
-        Intent backIntent = new Intent(this, MainActivity.class);
-        backIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent resultPendingIntent =
-                PendingIntent.getActivities(this, 0,
-                        new Intent[]{backIntent, resultIntent}, PendingIntent.FLAG_ONE_SHOT);
+
+        //Create the backstack for the activity
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addNextIntentWithParentStack(resultIntent);
+
+        //Get the pending intent WITH backstack
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        //Build the notification
         notificationBuilder.setContentIntent(resultPendingIntent);
 
         //Build the notification

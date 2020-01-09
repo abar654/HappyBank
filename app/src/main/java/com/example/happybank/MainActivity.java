@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+/**
+ * This is the menu activity which displays when the app is launched.
+ */
 public class MainActivity extends AppCompatActivity {
 
     public static final String DEPOSIT_FILENAME = "DepositFile.txt";
@@ -20,10 +23,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Set the onClickListeners for the buttons in this activity
         final Activity parent = this;
+
         Button depositButton = (Button) findViewById(R.id.mainDepositButton);
         depositButton.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -64,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Create the alarmService to control notifications
         alarmService = new AlarmService(this);
         alarmService.setAlarms();
 

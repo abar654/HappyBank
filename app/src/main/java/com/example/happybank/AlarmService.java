@@ -41,10 +41,18 @@ public class AlarmService extends Service {
         cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(bedtimeParts[0]));
         cal.set(Calendar.MINUTE, Integer.parseInt(bedtimeParts[1]));
 
-        Intent intent = new Intent(appContext, DepositNotificationService.class);
-        depositNotOperation = PendingIntent.getService(appContext, depositNotIntentCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        //Check that the calendar isn't in the past
+        //If it is then set it starting from tomorrow
+        if(cal.before(Calendar.getInstance())) {
+            cal.setTimeInMillis(cal.getTimeInMillis() + 24*60*60*1000);
+        }
 
-        alarmManager.cancel(depositNotOperation); // in case it is already running
+        //Incase there is already a notification, cancel it
+        if(depositNotOperation != null) {
+            alarmManager.cancel(depositNotOperation); // in case it is already running
+        }
+        Intent intent = new Intent(appContext, DepositNotificationService.class);
+        depositNotOperation = PendingIntent.getService(appContext, depositNotIntentCode, intent, PendingIntent.FLAG_CANCEL_CURRENT);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, depositNotOperation);
         //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + 10 * 1000, AlarmManager.INTERVAL_DAY, depositNotOperation);
 
